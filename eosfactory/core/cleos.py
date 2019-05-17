@@ -56,8 +56,8 @@ class Cleos():
 
         if setup.is_print_request:
             cl.append("--print-request")
-        if setup.is_print_response:
-            cl.append("--print-response")
+        #if setup.is_print_response:
+        #    cl.append("--print-response")
 
         cl.append(command_group)
         cl.extend(re.sub(re.compile(r'\s+'), ' ', command.strip()).split(" "))
@@ -708,6 +708,10 @@ class PushAction(Cleos):
 
         self.console = ""
         self.act = ""
+        if setup.is_print_response:
+            if self.console:
+                self.console += "\n"
+            self.console += str(self.json)
         if not dont_broadcast:
             for trace in self.json["processed"]["action_traces"]:
                 if trace["console"]:

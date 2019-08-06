@@ -57,24 +57,28 @@ def spawn(command_line, error_message='', shell=False, raise_exception=True):
     error message:
     ==============
     {}
-            '''.format(error_message, " ".join(command_line), stderr))
+            '''.format(error_message, " ".join(command_line), stderr),
+            translate=False)
 
         return stdout
     else:
         return (stdout, stderr)
 
+UBUNTU = "Ubuntu"
+DARWIN = "Darwin"
+OTHER_OS = None
 
-def uname(options=None):
-    command_line = ['uname']
-    if options:
-        command_line.append(options)
-
-    return spawn(command_line)
+def os_version():
+    version = spawn(["uname", "-v"])
+    if "Microsoft" in version or "ubuntu" in version:
+        return UBUNTU
+    if "Darwin" in version:
+        return DARWIN
+    return OTHER_OS
 
 
 def is_windows_ubuntu():
-    resp = uname("-v")
-    return resp.find("Microsoft") != -1
+    return "Microsoft" in spawn(["uname", "-v"])
 
 
 def which(file_path):
@@ -111,12 +115,18 @@ error message:
         os.mkdir(cwd)
 
     threading.Thread(target=thread_function).start()
-    p = subprocess.run(
-        command_line,
-        cwd=cwd,
-        shell=shell,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE)
+    try:
+        p = subprocess.run(
+            command_line,
+            cwd=cwd,
+            shell=shell,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE)
+    except Exception as e:
+        stop = True
+        time.sleep(PERIOD)
+        print(str(e))
+        exit()
 
     stop = True
     time.sleep(PERIOD)
@@ -152,3 +162,38 @@ def locate(start_dir, partial_path):
         return stdout.strip()
     
     return ""
+
+
+def project_zip():
+    # from zipfile_infolist import print_info
+    import zipfile
+
+    zip_file = '/mnt/c/Workspaces/EOS/contracts/examples/project_zip.zip'
+    with zipfile.ZipFile(zip_file, mode='w') as zf:
+        print('adding README.txt')
+        zf.write('/mnt/c/Workspaces/EOS/contracts/examples/fund/build/fund.abi')
+
+
+
+
+    # print('creating archive')
+    # zf = zipfile.ZipFile(zip_file, mode='w')
+    # try:
+    #     for f in "/mnt/c/Workspaces/EOS/contracts/examples/fund/build":
+    #         print("adding {}".format(f))
+    #         zf.write(f)
+    # finally:
+    #     print('closing') 
+    #     zf.close()
+
+    # print(print_info(zip_file))
+
+
+
+
+
+
+    # zip_file = "/mnt/c/Workspaces/EOS/contracts/examples/project_zip.zip"
+    # zip_object = zipfile.ZipFile(zip_file, 'w')
+    # for f in "/mnt/c/Workspaces/EOS/contracts/examples/fund":
+    #     zip_object.write(f)

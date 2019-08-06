@@ -2,6 +2,7 @@
 
 .. moduleauthor:: Tokenika
 '''
+
 import eosfactory.core.config
 
 name = "eosfactory"

@@ -41,8 +41,7 @@ def data_files_item(directory):
 DATA_FILES = [
     (config.EOSFACTORY_DIR, ["wsl_root.sh"]),
     (os.path.join(config.EOSFACTORY_DIR, "config"),
-        ["config/distributed/config.json", "config/config.ini", 
-                                                    "config/genesis.json"])] 
+        ["config/distributed/config.json", "config/config.ini"])] 
 DATA_FILES.extend(data_files_item('templates'))
 DATA_FILES.extend(data_files_item('contracts'))
 DATA_FILES.extend(data_files_item('includes'))
@@ -66,7 +65,7 @@ setuptools.setup(
     author_email='contact@tokenika.io',
     license='MIT',
     packages=setuptools.find_packages(),    
-    install_requires=['termcolor',],
+    install_requires=['termcolor', 'psutil'],
     include_package_data = True,
     data_files=DATA_FILES,
     zip_safe=False)

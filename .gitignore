@@ -52,3 +52,6 @@ narration.md
 **/.vscode/ipch
 podatkowosc.md
 
+arepl.py
+command_lines.txt
+docs/TODO.md

@@ -1,4 +1,4 @@
-# Welcome to EOSFactory v3.1.1
+# Welcome to EOSFactory v3.4.0
 
 [EOSFactory](http://eosfactory.io/) is a Python-based [EOS](https://eos.io) smart-contract development & testing framework, created by [Tokenika](https://tokenika.io).
 
@@ -36,12 +36,13 @@ We make sure everything we do is fully compatible with Windows - our toolset ena
 
 ## User documentation
 
-* [Introduction to EOSFactory](docs/tutorials/00.IntroductionToEOSFactory.html)
+* [Introduction to EOSFactory](docs/tutorials/00.IntroductionToEOSFactory.md)
 * [Installing EOSFactory](docs/tutorials/01.InstallingEOSFactory.md)
 * [Interacting with EOS Contracts in EOSFactory](docs/tutorials/02.InteractingWithEOSContractsInEOSFactory.md)
-* [Building and deploying EOS Contracts in EOSFactory](docs/tutorials/03.BuildingAndDeployingEOSContractsInEOSFactory.md)
-* [Working with EOS Contracts using EOSFactory in VSC](docs/tutorials/04.WorkingWithEOSContractsUsingEOSFactoryInVSC.md)
-* [Interacting with Public Testnet](docs/tutorials/05.InteractingWithPublicTestnet.md)
+* [Building and Deploying EOS Smart-Contracts in EOSFactory](docs/tutorials/03.BuildingAndDeployingEOSContractsInEOSFactory.md)
+* [Working with EOS Smart-Contracts Using EOSFactory in VSC](docs/tutorials/04.WorkingWithEOSContractsUsingEOSFactoryInVSC.md)
+* [Interacting with Public Testnets](docs/tutorials/05.InteractingWithPublicTestnet.md)
+* [Using EOSFactory with an Existing EOS Smart-Contract Project](docs/tutorials/06.UsingEOSFactoryWithExistingProject.md)
 
 ## Use cases
 
